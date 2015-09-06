@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        // Our unique application identifier!
+        applicationId "com.moac.android.myrssreader"
+        minSdkVersion 16
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+// Excludes unwanted dependencies from Simple-XML library, otherwise the build breaks!
+configurations {
+    all*.exclude group: 'stax', module: 'stax'
+    all*.exclude group: 'stax', module: 'stax-api'
+    all*.exclude group: 'xpp3', module: 'xpp3'
+}
+
+// Our dependencies. These are automatically downloaded from JCenter and Google.
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Google libraries for various UI elements.
+    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.android.support:design:22.2.1'
+
+    // Use Retrofit to asynchronously retrieve items.
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
+
+    // Use the Simple-XML parser to convert the items into POJOs.
+    compile('com.squareup.retrofit:converter-simplexml:1.9.0')
+    compile('org.simpleframework:simple-xml:2.7.1')
+}
