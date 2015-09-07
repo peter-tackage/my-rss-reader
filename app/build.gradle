@@ -32,9 +32,13 @@ configurations {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    // Google libraries for various UI elements.
+    // Google's Android libraries for various UI elements.
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support:design:22.2.1'
+
+    // More Android Support Libraries for the Feed list
+    compile 'com.android.support:cardview-v7:22.2.1'
+    compile 'com.android.support:recyclerview-v7:22.2.1'
 
     // Use Retrofit to asynchronously retrieve items.
     compile 'com.squareup.retrofit:retrofit:1.9.0'
@@ -42,4 +46,6 @@ dependencies {
     // Use the Simple-XML parser to convert the items into POJOs.
     compile('com.squareup.retrofit:converter-simplexml:1.9.0')
     compile('org.simpleframework:simple-xml:2.7.1')
+
+
 }
