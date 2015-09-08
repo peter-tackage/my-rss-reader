@@ -9,12 +9,10 @@ import java.util.List;
 /**
  * Simple-XML deserialization.
  *
- * Refer to: http://simple.sourceforge.net/download/stream/doc/tutorial/tutorial.php
+ * @see <a href="http://simple.sourceforge.net/download/stream/doc/tutorial/tutorial.php">Simple-XML</a>
  */
 @Root(strict = false)
 public class RssFeedResponse {
-
-    // TODO Parse some more elements and attributes.
 
     @Element
     private Channel channel;

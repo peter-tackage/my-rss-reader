@@ -7,6 +7,8 @@ import retrofit.http.GET;
 
 /**
  * A Retrofit interface for making API calls.
+ *
+ * @see <a href="http://square.github.io/retrofit/">Retrofit</a>
  */
 public interface BbcRssApi {
 
