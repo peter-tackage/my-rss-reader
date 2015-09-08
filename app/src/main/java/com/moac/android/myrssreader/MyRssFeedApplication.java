@@ -1,9 +1,9 @@
 package com.moac.android.myrssreader;
 
-import com.moac.android.myrssreader.api.BbcRssApi;
-
 import android.app.Application;
 import android.util.Log;
+
+import com.moac.android.myrssreader.api.BbcRssApi;
 
 import retrofit.ErrorHandler;
 import retrofit.RestAdapter;

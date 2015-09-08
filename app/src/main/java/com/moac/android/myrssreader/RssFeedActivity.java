@@ -1,8 +1,5 @@
 package com.moac.android.myrssreader;
 
-import com.moac.android.myrssreader.api.BbcRssApi;
-import com.moac.android.myrssreader.model.RssFeedResponse;
-
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +7,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+
+import com.moac.android.myrssreader.api.BbcRssApi;
+import com.moac.android.myrssreader.model.FeedItem;
+import com.moac.android.myrssreader.model.RssFeedResponse;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -24,18 +25,21 @@ public class RssFeedActivity extends AppCompatActivity {
 
     private RecyclerView feedRecyclerView;
 
+    private final FeedItemListAdapter.OnFeedItemClickListener onFeedItemClickListener
+            = new FeedItemListAdapter.OnFeedItemClickListener() {
+        @Override
+        public void onItemClicked(final FeedItem item) {
+            ArticleActivity.launch(RssFeedActivity.this, item.getLink());
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Set the Activity UI.
-        setContentView(R.layout.activity_rss);
+        setContentView(R.layout.activity_rss_feed);
         // Initialize the Feed UI.
         initFeedView();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
         // Trigger the loading of the feed.
         loadFeed();
     }
@@ -62,20 +66,28 @@ public class RssFeedActivity extends AppCompatActivity {
 
                 // Report success to the UI using a "Snackbar".
                 Snackbar.make(getRootView(),
-                              String.format("We received %d items: ", rssFeedResponse.getChannel()
-                                                                                     .getFeedItems()
-                                                                                     .size()),
-                              Snackbar.LENGTH_SHORT)
+                        String.format("We received %d items!", rssFeedResponse.getChannel()
+                                .getFeedItems()
+                                .size()),
+                        Snackbar.LENGTH_SHORT)
                         .show();
 
                 feedRecyclerView.setAdapter(
-                        new FeedItemListAdapter(rssFeedResponse.getChannel().getFeedItems()));
+                        new FeedItemListAdapter(rssFeedResponse.getChannel().getFeedItems(),
+                                onFeedItemClickListener));
             }
 
             @Override
             public void failure(final RetrofitError error) {
                 // Report failure to the UI using a "Snackbar" and log it.
-                Snackbar.make(getRootView(), "Error! " + error, Snackbar.LENGTH_LONG).show();
+                final Snackbar snackbar = Snackbar.make(getRootView(), "Error! " + error, Snackbar.LENGTH_INDEFINITE);
+                snackbar.setAction(getString(android.R.string.ok), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        snackbar.dismiss();
+                    }
+                });
+                snackbar.show();
                 Log.e(TAG, "Error when retrieving feed", error);
             }
         });
