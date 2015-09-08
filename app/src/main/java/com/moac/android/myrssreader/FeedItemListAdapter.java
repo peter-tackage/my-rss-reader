@@ -3,7 +3,6 @@ package com.moac.android.myrssreader;
 import com.moac.android.myrssreader.model.FeedItem;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +15,6 @@ import java.util.List;
  */
 public class FeedItemListAdapter extends RecyclerView.Adapter<FeedItemListAdapter.ViewHolder> {
 
-    private static final String TAG = FeedItemListAdapter.class.getSimpleName();
-
     private List<FeedItem> dataset;
 
     public FeedItemListAdapter(final List<FeedItem> dataset) {
@@ -29,14 +26,13 @@ public class FeedItemListAdapter extends RecyclerView.Adapter<FeedItemListAdapte
                                          int viewType) {
         // Create a new View instances from the XML layout definition.
         View view = LayoutInflater.from(parent.getContext())
-                                  .inflate(R.layout.cardview_feed_item, parent, false);
+                                  .inflate(R.layout.view_feed_item, parent, false);
         return new ViewHolder(view);
     }
 
     // Bind a View (new or recycled) to a data item.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Log.i(TAG, "onBindViewHolder() - position: " + position);
         holder.bindItem(dataset.get(position));
     }
 

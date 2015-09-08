@@ -5,6 +5,9 @@ import com.moac.android.myrssreader.model.RssFeedResponse;
 import retrofit.Callback;
 import retrofit.http.GET;
 
+/**
+ * A Retrofit interface for making API calls.
+ */
 public interface BbcRssApi {
 
     @GET("/news/rss.xml")

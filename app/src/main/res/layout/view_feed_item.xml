@@ -7,6 +7,12 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        card_view:contentPadding="8dp"
+        card_view:cardElevation="4dp"
         card_view:cardCornerRadius="4dp">
 
     <LinearLayout android:layout_width="match_parent"
@@ -17,13 +23,17 @@
                 android:id="@+id/textView_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp"
                 tools:text="Demo title"/>
 
         <TextView
                 android:id="@+id/textView_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="Demo description"/>
+                tools:text="Demo description"
+                android:maxLines="3"
+                android:ellipsize="end"/>
 
     </LinearLayout>
 

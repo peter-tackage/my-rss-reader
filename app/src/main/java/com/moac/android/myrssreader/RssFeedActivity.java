@@ -29,17 +29,22 @@ public class RssFeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // Set the Activity UI.
         setContentView(R.layout.activity_rss);
-
-        // Get a reference to the RecyclerView widget.
-        feedRecyclerView = (RecyclerView) findViewById(R.id.recyclerView_rssFeed);
-        feedRecyclerView.setHasFixedSize(true);
-        feedRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        // Initialize the Feed UI.
+        initFeedView();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        // Trigger the loading of the feed.
         loadFeed();
+    }
+
+    private void initFeedView() {
+        // Get a reference to the RecyclerView widget.
+        feedRecyclerView = (RecyclerView) findViewById(R.id.recyclerView_rssFeed);
+        feedRecyclerView.setHasFixedSize(true);
+        feedRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     /**
@@ -57,10 +62,10 @@ public class RssFeedActivity extends AppCompatActivity {
 
                 // Report success to the UI using a "Snackbar".
                 Snackbar.make(getRootView(),
-                              "We received some items: " + rssFeedResponse.getChannel()
-                                                                          .getFeedItems()
-                                                                          .size(),
-                              Snackbar.LENGTH_LONG)
+                              String.format("We received %d items: ", rssFeedResponse.getChannel()
+                                                                                     .getFeedItems()
+                                                                                     .size()),
+                              Snackbar.LENGTH_SHORT)
                         .show();
 
                 feedRecyclerView.setAdapter(
@@ -69,12 +74,8 @@ public class RssFeedActivity extends AppCompatActivity {
 
             @Override
             public void failure(final RetrofitError error) {
-
-                // Report failure to the UI using a "Snackbar".
-                Snackbar.make(getRootView(),
-                              "Error! " + error,
-                              Snackbar.LENGTH_LONG)
-                        .show();
+                // Report failure to the UI using a "Snackbar" and log it.
+                Snackbar.make(getRootView(), "Error! " + error, Snackbar.LENGTH_LONG).show();
                 Log.e(TAG, "Error when retrieving feed", error);
             }
         });
