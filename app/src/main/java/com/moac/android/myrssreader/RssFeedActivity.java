@@ -81,12 +81,14 @@ public class RssFeedActivity extends AppCompatActivity {
             public void failure(final RetrofitError error) {
                 // Report failure to the UI using a "Snackbar" and log it.
                 final Snackbar snackbar = Snackbar.make(getRootView(), "Error! " + error, Snackbar.LENGTH_INDEFINITE);
-                snackbar.setAction(getString(android.R.string.ok), new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        snackbar.dismiss();
-                    }
-                });
+                snackbar.setAction(getString(R.string.msg_retry),
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                loadFeed();
+                                snackbar.dismiss();
+                            }
+                        });
                 snackbar.show();
                 Log.e(TAG, "Error when retrieving feed", error);
             }

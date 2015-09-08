@@ -2,4 +2,5 @@
     <string name="app_name">My RSS Reader</string>
     <string name="title_activity_rss">RSS Feed Activity</string>
     <string name="title_activity_article">Article Activity</string>
+    <string name="msg.retry">Retry</string>
 </resources>
