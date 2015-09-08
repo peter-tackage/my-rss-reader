@@ -1,7 +1,7 @@
 My RSS Reader
 ========
 A simple demo Android app showing how to load and display an RSS feed. The app is written for those
-new to Android development and thus it avoids use advanced techniques that might be more common in production
+new to Android development and thus it avoids using advanced techniques that might be more common in production
  ready apps.
 
 It uses [Retrofit](http://square.github.io/retrofit/) and [Simple-XML](http://simple.sourceforge.net/)
