@@ -9,6 +9,10 @@ It uses [Retrofit](http://square.github.io/retrofit/) and [Simple-XML](http://si
  and [CardView](https://developer.android.com/reference/android/support/v7/widget/CardView.html)
  to display the items in a list.
 
+ ![Screenshot 1](./screenshots/device-2015-09-09-170834.png)
+
+ ![Screenshot 2](./screenshots/device-2015-09-09-171043.png)
+
 License
 -------
 
