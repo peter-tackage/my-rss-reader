@@ -1,4 +1,4 @@
-package com.moac.android.myrssreader;
+package com.moac.android.myrssreader.ui.feed;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.moac.android.myrssreader.R;
 import com.moac.android.myrssreader.model.FeedItem;
 
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class FeedItemListAdapter extends RecyclerView.Adapter<FeedItemListAdapter.ViewHolder> {
 
-    private List<FeedItem> dataset;
+    private final List<FeedItem> dataset;
     private final OnFeedItemClickListener onFeedItemClickListener;
 
     public FeedItemListAdapter(final List<FeedItem> dataset,

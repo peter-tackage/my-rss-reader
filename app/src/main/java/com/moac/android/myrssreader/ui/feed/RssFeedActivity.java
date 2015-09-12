@@ -1,4 +1,4 @@
-package com.moac.android.myrssreader;
+package com.moac.android.myrssreader.ui.feed;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -8,9 +8,12 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import com.moac.android.myrssreader.MyRssFeedApplication;
+import com.moac.android.myrssreader.R;
 import com.moac.android.myrssreader.api.BbcRssApi;
 import com.moac.android.myrssreader.model.FeedItem;
 import com.moac.android.myrssreader.model.RssFeedResponse;
+import com.moac.android.myrssreader.ui.article.ArticleActivity;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    tools:context="com.moac.android.myrssreader.ArticleActivity">
+    tools:context="com.moac.android.myrssreader.ui.article.ArticleActivity">
 
     <WebView
         android:id="@+id/webview_article"
