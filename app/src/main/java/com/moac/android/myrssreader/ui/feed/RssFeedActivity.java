@@ -66,7 +66,6 @@ public class RssFeedActivity extends AppCompatActivity {
         getBccRssApi().getFeedItems(new Callback<RssFeedResponse>() {
             @Override
             public void success(final RssFeedResponse rssFeedResponse, final Response response) {
-
                 // Report success to the UI using a "Snackbar".
                 Snackbar.make(feedRecyclerView,
                         String.format("We received %d items!", rssFeedResponse.getChannel()
@@ -93,6 +92,8 @@ public class RssFeedActivity extends AppCompatActivity {
                             }
                         });
                 snackbar.show();
+
+                // Report the failure to application logs
                 Log.e(TAG, "Error when retrieving feed", error);
             }
         });
