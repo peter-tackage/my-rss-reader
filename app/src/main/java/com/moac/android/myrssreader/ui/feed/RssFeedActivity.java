@@ -68,7 +68,7 @@ public class RssFeedActivity extends AppCompatActivity {
             public void success(final RssFeedResponse rssFeedResponse, final Response response) {
 
                 // Report success to the UI using a "Snackbar".
-                Snackbar.make(getRootView(),
+                Snackbar.make(feedRecyclerView,
                         String.format("We received %d items!", rssFeedResponse.getChannel()
                                 .getFeedItems()
                                 .size()),
@@ -83,7 +83,7 @@ public class RssFeedActivity extends AppCompatActivity {
             @Override
             public void failure(final RetrofitError error) {
                 // Report failure to the UI using a "Snackbar" and log it.
-                final Snackbar snackbar = Snackbar.make(getRootView(), "Error! " + error, Snackbar.LENGTH_INDEFINITE);
+                final Snackbar snackbar = Snackbar.make(feedRecyclerView, "Error! " + error, Snackbar.LENGTH_INDEFINITE);
                 snackbar.setAction(getString(R.string.msg_retry),
                         new View.OnClickListener() {
                             @Override
@@ -108,12 +108,4 @@ public class RssFeedActivity extends AppCompatActivity {
         return ((MyRssFeedApplication) getApplication()).getBccRssApi();
     }
 
-    /**
-     * Get the Activity's UI content root view.
-     *
-     * @return the Activity's root view.
-     */
-    private View getRootView() {
-        return findViewById(android.R.id.content);
-    }
 }
