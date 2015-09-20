@@ -14,13 +14,13 @@ import java.util.List;
 /**
  * Creates View items to be displayed in a RecyclerView, populated with data.
  */
-public class FeedItemListAdapter extends RecyclerView.Adapter<FeedItemListAdapter.ViewHolder> {
+public class FeedItemAdapter extends RecyclerView.Adapter<FeedItemAdapter.ViewHolder> {
 
     private final List<FeedItem> dataset;
     private final OnFeedItemClickListener onFeedItemClickListener;
 
-    public FeedItemListAdapter(final List<FeedItem> dataset,
-                               OnFeedItemClickListener onFeedItemClickListener) {
+    public FeedItemAdapter(final List<FeedItem> dataset,
+                           OnFeedItemClickListener onFeedItemClickListener) {
         this.dataset = dataset;
         this.onFeedItemClickListener = onFeedItemClickListener;
     }

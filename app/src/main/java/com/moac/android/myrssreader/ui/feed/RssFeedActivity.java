@@ -28,8 +28,8 @@ public class RssFeedActivity extends AppCompatActivity {
 
     private RecyclerView feedRecyclerView;
 
-    private final FeedItemListAdapter.OnFeedItemClickListener onFeedItemClickListener
-            = new FeedItemListAdapter.OnFeedItemClickListener() {
+    private final FeedItemAdapter.OnFeedItemClickListener onFeedItemClickListener
+            = new FeedItemAdapter.OnFeedItemClickListener() {
         @Override
         public void onItemClicked(final FeedItem item) {
             ArticleActivity.launch(RssFeedActivity.this, item.getLink());
@@ -75,7 +75,7 @@ public class RssFeedActivity extends AppCompatActivity {
                         .show();
 
                 feedRecyclerView.setAdapter(
-                        new FeedItemListAdapter(rssFeedResponse.getChannel().getFeedItems(),
+                        new FeedItemAdapter(rssFeedResponse.getChannel().getFeedItems(),
                                 onFeedItemClickListener));
             }
 
